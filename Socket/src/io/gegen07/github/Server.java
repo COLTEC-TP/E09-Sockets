@@ -9,16 +9,12 @@ public class Server {
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(12000);
 
-        Socket client = serverSocket.accept();
-        System.out.println("Nova conexão com o cliente " + client.getInetAddress().getHostAddress());
+        while (true) {
+            Socket client = serverSocket.accept();
+            System.out.println("Nova conexão com o cliente " + client.getInetAddress().getHostAddress());
 
-        Scanner s = new Scanner(client.getInputStream());
-        while (s.hasNextLine()) {
-            System.out.println(s.nextLine());
+            ClientHandler handler = new ClientHandler(client);
+            handler.start();
         }
-
-        s.close();
-        client.close();
-        serverSocket.close();
     }
 }
