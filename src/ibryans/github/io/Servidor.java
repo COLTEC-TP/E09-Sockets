@@ -13,21 +13,16 @@ public class Servidor {
 
         System.out.println("Servidor aberto na porta 10123");
 
-        // Conectando ao servidor
-        Socket cliente = server.accept();
+        while (true) {
 
-        Scanner entrada = new Scanner(cliente.getInputStream());
-        String clienteIp = cliente.getInetAddress().getHostAddress();
+            // Conectando ao servidor
+            Socket cliente = server.accept();
 
-        System.out.println("Cliente (" + clienteIp + ") conectado");
+            ConectaCliente conexao = new ConectaCliente(cliente);
 
-        while(entrada.hasNextLine()) {
-            System.out.println(clienteIp + ": " + entrada.nextLine());
+            conexao.start();
+
         }
-
-        entrada.close();
-        cliente.close();
-        server.close();
 
     }
 
