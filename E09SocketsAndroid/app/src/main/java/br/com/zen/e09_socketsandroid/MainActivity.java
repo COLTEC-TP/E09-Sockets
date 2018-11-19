@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             try {
-                socket = new Socket("192.168.1.8", 12345);
+                socket = new Socket("10.0.2.2", 12345);
                 canalSaida = new ObjectOutputStream(socket.getOutputStream());
                 canalSaida.writeObject("Teste");
                 socket.close();
