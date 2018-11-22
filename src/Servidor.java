@@ -1,5 +1,3 @@
-package br.ufmg.coltec.sockets;
-
 import java.io.IOException;
 import java.net.*;
 import java.util.Scanner;
