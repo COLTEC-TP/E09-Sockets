@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.net.*;
+import java.sql.Connection;
 import java.util.Scanner;
 
 public class Servidor {
@@ -8,18 +9,16 @@ public class Servidor {
             IOException {
 
         ServerSocket servidor = new ServerSocket(12345);
-        System.out.println("Porta 12345 aberta!");
+        System.out.println("A porta para a conexão foi aberta! (12345)");
 
-        Socket cliente = servidor.accept();
-        System.out.println("Nova conexão com o cliente " + cliente.getInetAddress().getHostAddress());
+        while (true) {
+            Socket cliente = servidor.accept();
+            System.out.println("Nova conexão com o cliente " + cliente.getInetAddress().getHostAddress());
 
-        Scanner scanner = new Scanner (cliente.getInputStream());
-        while(scanner.hasNextLine()){
-            System.out.println(scanner.nextLine());
+            Connections conexao = new Connections(cliente);
+
+            Thread thread = new Thread(conexao);
+            thread.start();
         }
-
-        scanner.close();
-        servidor.close();
-        cliente.close();
     }
 }

@@ -3,11 +3,11 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Cliente {
+public class Cliente2 {
     public static void main(String[] args)
             throws IOException {
 
-        Socket cliente = new Socket("127.0.0.5", 12345);
+        Socket cliente = new Socket("127.0.0.1", 12345);
         System.out.println("O cliente se conectou ao servidor!");
 
         Scanner mensagens = new Scanner(System.in);
