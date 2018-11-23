@@ -12,8 +12,9 @@ public class Connections implements Runnable  {
 
     @Override
     public void run(){
+        Scanner mensagens = null;
         try {
-            Scanner mensagens = new Scanner(cliente.getInputStream());
+            mensagens = new Scanner(cliente.getInputStream());
             while(mensagens.hasNextLine()){
                 System.out.println(mensagens.nextLine());
             }
