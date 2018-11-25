@@ -15,17 +15,13 @@ public class Servidor {
     public static void main ( String args []) throws IOException {
         ServerSocket servidor = new ServerSocket (12345) ;
         System.out.println(" Porta 12345 aberta !");
-   
-        Socket cliente = servidor.accept();
-        System.out.println(" Nova conexão com o cliente " +cliente.getInetAddress().getHostAddress()); 
-        
-        Scanner scanner = new Scanner(cliente.getInputStream());
-        while(scanner.hasNextLine()){
-            System.out.println(scanner.nextLine());
+        while(true){
+            Socket cliente = servidor.accept();
+            TratamentoClass tratamento = new TratamentoClass(cliente);
+            Thread t = new Thread(tratamento);
+            t.start();
+
+            //servidor.close();
         }
-        
-        scanner.close();
-        cliente.close();
-        servidor.close();
     }
 }
