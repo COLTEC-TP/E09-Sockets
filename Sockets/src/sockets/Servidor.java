@@ -13,8 +13,8 @@ import java.net.ServerSocket;
 
 public class Servidor {
     public static void main ( String args []) throws IOException {
-        ServerSocket servidor = new ServerSocket (12345) ;
-        System.out.println(" Porta 12345 aberta !");
+        ServerSocket servidor = new ServerSocket (4444) ;
+        System.out.println(" Porta 4444 aberta !");
         while(true){
             Socket cliente = servidor.accept();
             TratamentoClass tratamento = new TratamentoClass(cliente);
